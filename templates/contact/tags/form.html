@@ -1,0 +1,15 @@
+<form class="footer__form" action="{% url 'contact' %}" method="post" id="formZakaz">
+    {% csrf_token %}
+    {{ contact_form }}
+{#    <input class="footer__input" type="text" name="name" placeholder="Фамилия, имя и отчество*" required>#}
+{#    <input class="footer__input" type="tel" name="contacts" placeholder="Номер телефона*" required>#}
+{#    <input class="footer__input" type="email" name="mail" placeholder="E-mail">#}
+{#    <input class="footer__input footer__input-text" type="text" name="text" placeholder="Сообщение">#}
+    <div>
+        <button class="btn-reset hvr-shutter-out-horizontal btn footer__btn">Отправить данные</button>
+        <label>
+            <input type="checkbox" required>
+            <span class="footer__label">Соглашаюсь на обработку данных</span>
+        </label>
+    </div>
+</form>

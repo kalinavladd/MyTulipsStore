@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Тюльпаны из Голландии {% endblock title %}</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{% static 'css/hover-min.css' %}">
+    <!-- <link rel="shortcut icon" href="img/favicon2.ico" type="image/x-icon"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .tulip__img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+    </style>
+
+  </head>
+{% include 'include/header.html' %}
+
+<section class="container section__hero__all">
+    <h1 class="hero__title">
+        Специальное предложение
+    </h1>
+    <p class="hero__text">
+        Получите скидку при заказе от 1000 штук
+    </p>
+    <div class="hero__btn-container">
+        <button class="btn-reser btn hvr-shutter-out-horizontal hero__btn">
+            <a class="btn__link" href="#">Заказать прямо сейчас</a>
+        </button>
+    </div>
+</section>
+ <section class="container section__all__tulips">
+    <div class="container flex services__container">
+        {% for tulip in all_tulips %}
+            <article class="sevices__article-all">
+                <img class="tulip__img" src="{{ tulip.image.url }}" alt="tulips image">
+                <h3 class="article__title">
+                    <a href="{{ tulip.get_absolute_url }}">{{ tulip.title }}</a>
+                </h3>
+                <div class="services__star">
+                    <span class="article_price">{{ tulip.price }} р/шт</span>
+                    <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                    <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                    <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                    <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                    <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                </div>
+                <p class="article__about">{{ tulip.description|safe }}</p>
+                <button class="btn-reset btn hvr-shutter-out-horizontal price__button">
+                    <a class="price__link" href="#">Заказать</a>
+                </button>
+            </article>
+        {% endfor %}
+    </div>
+ </section>
+{% include 'include/footer.html' %}
+
+
+
+
+
+
+
+{#</main>#}
+

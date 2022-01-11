@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="container section__tulip animate__animated animate__backInRight">
+        <div class="container container__contact">
+{#            <article class="sevices__article-tulip">#}
+                {{ flatpage.content }}
+{#            </article>#}
+        </div>
+        <div class="container__map" id="map" style="width: 600px; height: 560px"></div>
+    </section>
+{% endblock content %}

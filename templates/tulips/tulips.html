@@ -1,0 +1,70 @@
+{% extends 'tulips/base.html' %}
+{% block title %} {{ tulip.title }} {% endblock title %}
+{% load static %}
+{% block tulip %}
+
+        <section class="container section__tulip animate__animated animate__backInRight">
+            <div class="container__tulip">
+                <article class="sevices__article-tulip">
+                    <img class="tulip__img-info" src="{{ tulip.image.url }}" alt="tulips image">
+                    <h3 class="article__title-info animate__animated animate__backInRight">
+                        {{ tulip.title }}
+                    </h3>
+                    <div class="services__star animate__animated animate__backInRight">
+                        <span class="article_price-info animate__animated animate__backInRight">{{ tulip.price }} р/шт</span>
+                        <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                        <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                        <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                        <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                        <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                    </div>
+                    <p class="article__about-info animate__animated animate__backInRight">{{ tulip.description|safe }}</p>
+                    <form class="tulip__form animate__animated animate__backInRight" action="#" method="post">
+                        <input class="tulip__input" type="number" name="number" placeholder="1" required>
+                        <button class="btn-reset btn price__button hvr-shutter-out-horizontal">
+                            <a class="price__link" href="#">Заказать</a>
+                        </button>
+                    </form>
+                    <div class="partners animate__animated animate__backInRight">
+                        <img class="partners__img" width="160" height="100" src="{% static 'img/tinkof.svg' %}" alt="">
+                        <img class="partners__img" width="100" height="100" src="{% static 'img/visa.svg' %}" alt="">
+                        <img class="partners__img" width="80" height="90" src="{% static 'img/mastercard.svg' %}" alt="">
+                        <img class="partners__img" width="120" height="110" src="{% static 'img/halva.svg' %}" alt="">
+                    </div>
+                </article>
+                                <div class="container__comment">
+                    <h3 class="comment__title">
+                        Оставить отзыв
+                    </h3>
+                    <form class="tulip__form__commentar" action="{% url 'add_review' tulip.id %}" method="post" id="formReview">
+                        {% csrf_token %}
+                        <input type="hidden" name="parent" id="contactparent" value="">
+{#                        передаем ID того отзыва на который хотим ответить, тоесть РОДИТЕЛЯ#}
+                        <input class="footer__input comment_input" type="text" name="name" placeholder="Имя*" required>
+                        <input class="footer__input comment_input" type="email" name="email" placeholder="E-mail">
+                        <textarea class="footer__input footer__input-text comment__text" id="contactcomment" type="text" name="text" placeholder="Сообщение"></textarea>
+                        <button class="btn-reset btn footer__btn hvr-shutter-out-horizontal">Отправить</button>
+                    </form>
+                </div>
+                {% for review in tulip.reviews_set.all %}
+                    <div class="container container__comment-user">
+                        <article class="artic__coment">
+                            <img width="60" height="60" src="/img/image_1.png" alt="">
+                        <h4 class="user__name">{{ review.name }}</h4>
+                        <p class="user__comment">{{ review.text }}</p>
+                        </article>
+                        <a href="#formReview" onclick="addReview('{{ review.name }}', '{{ review.id }}')">Ответить</a>
+{#                    addReview передаем имя и ID пользователя на комент которого хотим ответить#}
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <script>
+        function addReview(name, id) {
+            document.getElementById("contactparent").value = id;
+            document.getElementById("contactcomment").innerText = `${name}, `
+        }
+        </script>
+{% endblock tulip %}
+
+

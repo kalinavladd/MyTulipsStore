@@ -1,0 +1,158 @@
+{% extends 'tulips/base.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <section class="container section__hero">
+        <h1 class="hero__title animate__animated animate__backInUp">
+            Тюльпаны из Голландии
+        </h1>
+        <p class="hero__text animate__animated animate__backInUp">
+            Продажа оптом по Москве<br>и Московской области
+        </p>
+        <div class="hero__btn-container">
+            <button class="btn-reser hvr-shutter-out-horizontal hero__btn">
+                <a class="btn__link" href="#">Заказать прямо сейчас</a>
+            </button>
+        </div>
+    </section>
+    <section class="container section__services">
+        <h2 class="sevices__title">
+            Эксклюзивные предложения от наших поставщиков из Голландии
+        </h2>
+        <a class="collection__link" href="{{ '/all_tulips/' }}">
+            <svg width="35" height="8" viewBox="0 0 35 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M34.3536 4.35355C34.5488 4.15829 34.5488 3.84171 34.3536 3.64645L31.1716 0.464466C30.9763 0.269204 30.6597 0.269204 30.4645 0.464466C30.2692 0.659728 30.2692 0.976311 30.4645 1.17157L33.2929 4L30.4645 6.82843C30.2692 7.02369 30.2692 7.34027 30.4645 7.53553C30.6597 7.7308 30.9763 7.7308 31.1716 7.53553L34.3536 4.35355ZM0 4.5H34V3.5H0L0 4.5Z" fill="black"/>
+            </svg>
+            Смотреть всю коллекцию
+        </a>
+
+        <div class="container flex services__container">
+            {% for tulip in tulips_list %}
+                <article class="sevices__article">
+                    <img class="tulip__img" src="{{ tulip.image.url }}" alt="tulips image">
+                    <h3 class="article__title">
+                        <a href="{{ tulip.get_absolute_url }}">{{ tulip.title }}</a>
+{#                            <a href="{% url 'tulip_detail' tulip.url %}">{{ tulip.title }}</a> альтернативный метод подстановки урла#}
+                    </h3>
+                    <div class="services__star">
+                        <span class="article_price">{{ tulip.price }} р/шт</span>
+                        <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                        <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                        <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                        <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                        <img class="star" src="{% static 'img/star.svg' %}" alt="">
+                    </div>
+                    <p class="article__about">{{ tulip.description|safe }}</p>
+                    <button class="btn-reset hvr-shutter-out-horizontal btn price__button">
+                        <a class="price__link" href="#">Заказать</a>
+                    </button>
+                </article>
+            {% endfor %}
+        </div>
+
+    </section>
+    <section class="container section__gallery">
+        <h2 class="gallery__title" id="gallery__title-id">
+            Галерея от наших поставщиков
+        </h2>
+        <!-- Slider main container -->
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <img src="{% static 'img/tulips_1.jpeg' %}" alt="tulips gallery">
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'img/tulips_2.jpeg' %}" alt="tulips gallery">
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'img/tulips_3.jpeg' %}" alt="tulips gallery">
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'img/tulips_5.jpeg' %}" alt="tulips gallery">
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'img/tulips_6.jpeg' %}" alt="tulips gallery">
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'img/tulips_7.jpeg' %}" alt="tulips gallery">
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'img/tulips_9.jpeg' %}" alt="tulips gallery">
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'img/tulips_10.jpeg' %}" alt="tulips gallery">
+            </div>
+            ...
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+        </div>
+    </section>
+    <section class="container section__about">
+        <h2 class="about__title">О нас</h2>
+        <p class="about__text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque sequi id placeat quibusdam pariatur alias at aspernatur nemo quas cumque magni, repellat perferendis maxime odit ea non aliquid illo assumenda.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus aperiam quisquam dolores ipsa eligendi maxime, ut voluptate cumque ad voluptatem est distinctio non, eaque nemo a iusto illo harum illum.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita saepe veritatis asperiores, perferendis eos praesentium blanditiis exercitationem illo, autem nulla assumenda libero quae rem ab iste vitae qui, repellendus veniam?
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam aliquam assumenda dolorum eligendi nostrum sit alias, vitae doloribus corrupti nobis blanditiis est voluptate eum iste! Atque aperiam tempora inventore necessitatibus. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis esse nihil ea consequatur quisquam cupiditate suscipit, illum porro dolorem ex inventore nobis deserunt ipsa non odit dolor tempora officiis dolores.
+        </p>
+    </section>
+    <section class="container section__question">
+        <h2 class="question__title">
+            Часто задаваемые вопросы
+        </h2>
+        <div class="accordion">
+            <div class="contentBx">
+                <div class="label">
+                    Из чего формируется конечная стоимость доставки?
+                </div>
+                <div class="content">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus qui, sapiente tempore veniam voluptate ut error, blanditiis labore nisi natus iste quaerat reiciendis dicta eaque. Reprehenderit, quos veniam? Facere, ad!
+                </div>
+            </div>
+            <div class="contentBx">
+                <div class="label">
+                    Как настоящие голландские тюльпаны попадают в нашу страну?
+                </div>
+                <div class="content">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus qui, sapiente tempore veniam voluptate ut error, blanditiis labore nisi natus iste quaerat reiciendis dicta eaque. Reprehenderit, quos veniam? Facere, ad!
+                </div>
+            </div>
+            <div class="contentBx">
+                <div class="label">
+                    Я выбираю между разными оптовыми поставщиками. В чём ваше отличие?
+                </div>
+                <div class="content">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus qui, sapiente tempore veniam voluptate ut error, blanditiis labore nisi natus iste quaerat reiciendis dicta eaque. Reprehenderit, quos veniam? Facere, ad!
+                </div>
+            </div>
+            <div class="contentBx">
+                <div class="label">
+                    У каких поставщиков Вы заказываете цветы и почему у Вас выгодная цена?
+                </div>
+                <div class="content">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus qui, sapiente tempore veniam voluptate ut error, blanditiis labore nisi natus iste quaerat reiciendis dicta eaque. Reprehenderit, quos veniam? Facere, ad!
+                </div>
+            </div>
+            <div class="contentBx">
+                <div class="label">
+                    Могу ли я вернуть деньги на каком-либо из этапов доставки?
+                </div>
+                <div class="content">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus qui, sapiente tempore veniam voluptate ut error, blanditiis labore nisi natus iste quaerat reiciendis dicta eaque. Reprehenderit, quos veniam? Facere, ad!
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+

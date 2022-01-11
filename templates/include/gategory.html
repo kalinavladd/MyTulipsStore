@@ -1,0 +1,16 @@
+{#{% load static %}#}
+{##}
+{#<form action="{% url 'filter' %}" method="get">#}
+{#    <div class="left-side">#}
+{#        <h3 class="side__title">Категории</h3>#}
+{#        <ul class="side__list list-reset">#}
+{#            {% for categoryy in view.get_categor %}#}
+{#                <li class="side__item">#}
+{#                    <input type="checkbox" class="checked" name="category" value="{{ category.id }}">#}
+{#                    <span class="side__span">{{ categoryy.name }} ({{ categoryy.tulips_set.count }})</span>#}
+{#                </li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#    <button type="submit">Отправить</button>#}
+{#    </div>#}
+{#</form>#}

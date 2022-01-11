@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {% endblock title %}
+{% block header %}
+    <header class="container header__container">
+    <nav class="header__nav">
+        <a class="logo__image-href" href="#">
+            <img class="logo__image" src="{% static 'img/logo_1.png' %}" alt="image_logo">
+        </a>
+        <ul class="header__list list-reset">
+            <li class="header__list-item">
+                <a class="header__link" href="#">
+                    На главную
+                </a>
+            </li>
+            <li class="header__list-item">
+                <a class="header__link" href="#">
+                    Галерея
+                </a>
+            </li>
+            <li class="header__list-item">
+                <a class="header__link" href="#">
+                    О нас
+                </a>
+            </li>
+            <li class="header__list-item">
+                <a class="header__link" href="#">
+                    Контакты
+                </a>
+            </li>
+            <li class="header__list-item">
+                <a class="header__link" href="#">
+                    Отзывы
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+{% endblock header %}
+
+{% block content %}
+    {% block heroall %}
+<section class="container section__hero__all">
+    <h1 class="hero__title">
+        Специальное предложение
+    </h1>
+    <p class="hero__text">
+        Получите скидку при заказе от 1000 штук
+    </p>
+    <div class="hero__btn-container">
+        <button class="btn-reser btn hvr-shutter-out-horizontal hero__btn">
+            <a class="btn__link" href="#">Заказать прямо сейчас</a>
+        </button>
+    </div>
+</section>
+    {% endblock heroall %}
+
+        {% include 'include/gategory.html' %}
+    </section>
+    {% include 'include/pagination.html' %}
+    {% block tulip %}
+    {% endblock tulip %}
+{% endblock content %}
